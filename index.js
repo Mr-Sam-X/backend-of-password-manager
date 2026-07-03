@@ -147,6 +147,12 @@ app.put('/', async (req, res) => {
 
 
 
-app.listen(port, () => {
-    console.log(`Example app listening on  http://localhost:${port}`)
-})
+// Remove or change your old app.listen to this:
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(port, () => {
+        console.log(`Local app listening on http://localhost:${port}`)
+    });
+}
+
+// CRUCIAL FOR VERCEL: Export the app module
+module.exports = app;
