@@ -26,8 +26,8 @@ const port = 3000
 app.use(bodyparser.json())
 app.use(cors())
 
-// Get all the passwords with decryption
-app.get('/', async (req, res) => {
+// Get all the passwords with decryption (Updated path to /api)
+app.get('/api', async (req, res) => {
     try {
         const db = await getConnectedDb(); // Handled safely inside the route
         const collection = db.collection('passwords');
@@ -57,8 +57,8 @@ app.get('/', async (req, res) => {
     }
 });
 
-// Get all the admins with decrypted passwords
-app.get('/GetAdmins', async (req, res) => {
+// Get all the admins with decrypted passwords (Updated path to /api/GetAdmins)
+app.get('/api/GetAdmins', async (req, res) => {
     try {
         const db = await getConnectedDb();
         const collection = db.collection('admins');
@@ -79,8 +79,8 @@ app.get('/GetAdmins', async (req, res) => {
     }
 });
 
-// Save a password with AES encryption
-app.post('/', async (req, res) => { 
+// Save a password with AES encryption (Updated path to /api)
+app.post('/api', async (req, res) => { 
     try {
         const passwordData = req.body;
         const db = await getConnectedDb();
@@ -100,8 +100,8 @@ app.post('/', async (req, res) => {
     }
 });
 
-// Register admin with AES
-app.post('/registeradmin', async (req, res) => { 
+// Register admin with AES (Updated path to /api/registeradmin)
+app.post('/api/registeradmin', async (req, res) => { 
     try {
         const adminData = req.body;
         const db = await getConnectedDb();
@@ -120,8 +120,8 @@ app.post('/registeradmin', async (req, res) => {
     }
 });
 
-// Delete a password by id
-app.delete('/', async (req, res) => { 
+// Delete a password by id (Updated path to /api)
+app.delete('/api', async (req, res) => { 
     try {
         const db = await getConnectedDb();
         const collection = db.collection('passwords');
@@ -135,8 +135,8 @@ app.delete('/', async (req, res) => {
     }
 })
 
-// Update a password by custom id
-app.put('/', async (req, res) => {
+// Update a password by custom id (Updated path to /api)
+app.put('/api', async (req, res) => {
     try {
         const db = await getConnectedDb();
         const collection = db.collection('passwords');
